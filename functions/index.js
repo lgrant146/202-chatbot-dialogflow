@@ -1,11 +1,11 @@
 const functions = require('firebase-functions');
 const cors = require('cors')({ origin: true});
 const admin = require('firebase-admin');
-const serviceAccount = require('./service-account.json');
+const serviceAccount = require('./service-account.json.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://fireship-lessons.firebaseio.com"
+  databaseURL: "https://vera-7c28a.firebaseio.com"
 });
 
 const { SessionsClient } = require('dialogflow');
@@ -17,7 +17,7 @@ exports.dialogflowGateway = functions.https.onRequest((request, response) => {
 
 
     const sessionClient = new SessionsClient({ credentials: serviceAccount });
-    const session = sessionClient.sessionPath('fireship-lessons', sessionId);
+    const session = sessionClient.sessionPath('vera-7c28a', sessionId);
 
 
     const responses = await sessionClient.detectIntent({ session, queryInput});
